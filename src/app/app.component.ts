@@ -7,19 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'app';
-  items: number[] = [1, 2, 3, 4];
-  counter: number = 5;
 
-  push() {
-    this.items.push(this.counter);
-    this.counter += 1;
+  constructor() {
+    //this.documentRoot = { title: '', items: [] };
   }
 
-  pop() {
-    this.items.pop();
-  }
-
-  document = {
+  documentRoot:any = {
     title: 'A book',
     items: [
       {
@@ -47,8 +40,8 @@ export class AppComponent {
             items: []
           },
           {
-            title: 'Section 2',
-            items: []
+            title: 'Mr. Snuffleupagus',
+            data: 'hsanehuanosuh'
           }
         ]
       },

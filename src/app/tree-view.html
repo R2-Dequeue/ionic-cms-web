@@ -1,0 +1,16 @@
+{{ tree.title }} <sup style="color: red; border: 1px solid black">X</sup>
+<!-- <button>X</button> -->
+
+
+<!--<span class="glyphicon glyphicon-remove"></span>
+<span class="glyphicon glyphicon-file"></span>
+<span class="glyphicon glyphicon-arrow-down"></span>-->
+<ul *ngIf="doesNotHaveData()">
+  <li *ngFor="let branch of tree.items">
+    <tree-view [tree]="branch"></tree-view>
+  </li>
+  <li><button>+S</button><button>+D</button></li>
+</ul>
+<ul *ngIf="hasData()">
+  <li><button>Edit</button></li>
+</ul>
