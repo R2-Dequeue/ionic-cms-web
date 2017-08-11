@@ -12,45 +12,69 @@ export class AppComponent {
     //this.documentRoot = { title: '', items: [] };
   }
 
-  documentRoot:any = {
-    title: 'A book',
+  documentRoot: any = {
+    title: 'Pharmacopeia',
     items: [
       {
-        title: 'Chapter 1',
+        title: 'Analgesics',
         items: [
           {
-            title: 'Section 1',
-            items: []
+            title: 'Acetaminophen',
+            data: 'hsanehuanosuh'
           },
           {
-            title: 'Section 2',
-            items: []
+            title: 'Clonidine',
+            data: 'hsanehuanosuh'
           },
           {
-            title: 'Section 3',
-            items: []
-          }
-        ]
-      },
-      {
-        title: 'Chapter 2',
-        items: [
-          {
-            title: 'Section 1',
-            items: []
+            title: 'Fentanyl',
+            data: 'hsanehuanosuh'
           },
           {
-            title: 'Mr. Snuffleupagus',
+            title: 'Ibuprofen',
+            data: 'hsanehuanosuh'
+          },
+          {
+            title: 'Ketorolac',
             data: 'hsanehuanosuh'
           }
         ]
       },
       {
-        title: 'Chapter 3',
+        title: 'Sedatives',
         items: [
           {
-            title: 'Section 1',
-            items: []
+            title: 'Dexmedetomidine',
+            data: 'hsanehuanosuh'
+          },
+          {
+            title: 'Diazepam',
+            data: 'hsanehuanosuh'
+          },
+          {
+            title: 'Etomidate',
+            data: 'hsanehuanosuh'
+          },
+          {
+            title: 'Ketamine',
+            data: 'hsanehuanosuh'
+          },
+          {
+            title: 'Lorazepam',
+            data: 'hsanehuanosuh'
+          }
+        ]
+      },
+      {
+        title: 'Local Anesthetics',
+        items: [
+          {
+            title: 'Bupivacaine',
+            data: 'hsanehuanosuh'
+          },
+          {
+            title: 'Lidocaine',
+            data: 'hsanehuanosuh'
           }
         ]
       }

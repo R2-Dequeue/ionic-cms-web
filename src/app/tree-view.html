@@ -1,16 +1,16 @@
-{{ tree.title }} <sup style="color: red; border: 1px solid black">X</sup>
-<!-- <button>X</button> -->
+<span class="title-hover" (mouseenter)="titleBarVisibility = 'initial'" (mouseleave)="titleBarVisibility = 'none'">
+  <span *ngIf="isNotAPage()" class="glyphicon glyphicon-list"></span>
+  <span *ngIf="isPage()" class="glyphicon glyphicon-file"></span>
+  <span class="section-title">{{ tree.title }}</span>
+  <span class="glyphicon glyphicon-remove text-danger" [style.display]="titleBarVisibility"></span>
+  <span class="glyphicon glyphicon-pencil" [style.display]="titleBarVisibility" (click)="fillTextarea()"></span>
+</span>
 
-
-<!--<span class="glyphicon glyphicon-remove"></span>
-<span class="glyphicon glyphicon-file"></span>
-<span class="glyphicon glyphicon-arrow-down"></span>-->
-<ul *ngIf="doesNotHaveData()">
+<ul *ngIf="isNotAPage()">
   <li *ngFor="let branch of tree.items">
     <tree-view [tree]="branch"></tree-view>
   </li>
-  <li><button>+S</button><button>+D</button></li>
-</ul>
-<ul *ngIf="hasData()">
-  <li><button>Edit</button></li>
+  <li>
+    <span class="glyphicon glyphicon-plus"></span><button (click)="addSection()">S</button><button (click)="addPage()">P</button>
+  </li>
 </ul>

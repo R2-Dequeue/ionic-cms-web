@@ -1,0 +1,14 @@
+.section-title {
+  text-decoration: underline;
+}
+
+.section-title sup {
+  color: red;
+  border: 1px solid black;
+}
+
+ul {
+  list-style-type: none;
+  /* padding-left: 0px; */
+  border-left: 1px solid black;
+}

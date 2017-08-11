@@ -9,35 +9,28 @@ export class TreeViewComponent {
 
   @Input()
   tree;
+  titleBarVisibility: string = 'none';
 
-  hasItems() {
-    return typeof this.tree['items'] !== 'undefined' && this.tree.items.length > 0;
-  }
-
-  hasData() {
+  isPage() {
     return typeof this.tree['data'] !== 'undefined';
   }
 
-  doesNotHaveItems() {
-    return typeof this.tree['items'] === 'undefined' || this.tree.items.length === 0;
-  }
-
-  doesNotHaveData() {
+  isNotAPage() {
     return typeof this.tree['data'] === 'undefined';
   }
 
-  addItem(name) {
+  addSection() {
     if (typeof this.tree['items'] === 'undefined')
       this.tree['items'] = [];
     
-    this.tree.items.push({ title: name, items: []});
+    this.tree.items.push({ title: 'A Section', items: []});
   }
 
-  addData(name, info) {
+  addPage() {
     if (typeof this.tree['items'] === 'undefined')
       this.tree['items'] = [];
 
-    this.tree.items.push({ title: name, data: info });
+    this.tree.items.push({ title: 'Some Drug', data: 'life-saving medical information' });
   }
 
 }
