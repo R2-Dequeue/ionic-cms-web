@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { GuiService } from './gui.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +11,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title: string = 'app';
 
-  constructor() {
+  constructor(private guiService: GuiService) {
     //this.documentRoot = { title: '', items: [] };
+  }
+
+  logDocument() {
+    console.log(this.documentRoot);
   }
 
   documentRoot: any = {

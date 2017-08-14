@@ -1,9 +1,9 @@
 <span class="title-hover" (mouseenter)="titleBarVisibility = 'initial'" (mouseleave)="titleBarVisibility = 'none'">
-  <span *ngIf="isNotAPage()" class="glyphicon glyphicon-list"></span>
-  <span *ngIf="isPage()" class="glyphicon glyphicon-file"></span>
-  <span class="section-title">{{ tree.title }}</span>
+  <span *ngIf="isNotAPage()" class="glyphicon glyphicon-folder-open"></span>
+  <span *ngIf="isAPage()" class="glyphicon glyphicon-file"></span>
+  <span class="section-title" (click)="fillTextarea()">{{ tree.title }}</span>
   <span class="glyphicon glyphicon-remove text-danger" [style.display]="titleBarVisibility"></span>
-  <span class="glyphicon glyphicon-pencil" [style.display]="titleBarVisibility" (click)="fillTextarea()"></span>
+  <span class="glyphicon glyphicon-pencil text-primary" [style.display]="titleBarVisibility" (click)="fillTextarea()"></span>
 </span>
 
 <ul *ngIf="isNotAPage()">

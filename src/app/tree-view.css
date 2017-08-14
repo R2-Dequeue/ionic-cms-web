@@ -2,9 +2,9 @@
   text-decoration: underline;
 }
 
-.section-title sup {
-  color: red;
-  border: 1px solid black;
+/* papyrus EEDFA6 */
+.glyphicon.glyphicon-folder-open {
+  color: #f1d592;
 }
 
 ul {

@@ -9,8 +9,18 @@
   </ul>
 </div>
 <div style="width: 400px; display: inline-block;">
-  <span class="page-title">Acetaminophen</span><br>
+  <input [(ngModel)]="guiService.title"><br>
   <br>
   <!-- 1136 x 640, 320 x 568 pixels -->
-  <textarea style="width: 320px; height: 600px">About Acetaminophen</textarea>
+  <!-- <textarea style="width: 320px; height: 600px" [(value)]="guiService.data"></textarea><br> -->
+  <input [(ngModel)]="guiService.data"><br>
+  <button (click)="guiService.populateModel()">Save</button>
 </div>
+<br>
+<br>
+<button (click)="logDocument()">Log</button><br>
+<span class="glyphicon glyphicon-file"></span>
+<span class="glyphicon glyphicon-folder-close"></span>
+<span class="glyphicon glyphicon-folder-open"></span>
+<span class="glyphicon glyphicon-list"></span>
+<span class="glyphicon glyphicon-file"></span>
