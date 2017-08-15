@@ -28,14 +28,14 @@ export class TreeViewComponent {
     if (typeof this.tree['items'] === 'undefined')
       this.tree['items'] = [];
     
-    this.tree.items.push({ title: 'A Section', items: []});
+    this.tree.items.push({ title: 'A New Section', items: []});
   }
 
   addPage() {
     if (typeof this.tree['items'] === 'undefined')
       this.tree['items'] = [];
 
-    this.tree.items.push({ title: 'Some Drug', data: 'life-saving medical information' });
+    this.tree.items.push({ title: 'A New Page', data: 'Detailed medical information' });
   }
   
   fillTextarea() {

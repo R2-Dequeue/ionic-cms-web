@@ -1,9 +1,11 @@
 <span class="title-hover" (mouseenter)="titleBarVisibility = 'initial'" (mouseleave)="titleBarVisibility = 'none'">
-  <span *ngIf="isNotAPage()" class="glyphicon glyphicon-folder-open"></span>
-  <span *ngIf="isAPage()" class="glyphicon glyphicon-file"></span>
-  <span class="section-title" (click)="fillTextarea()">{{ tree.title }}</span>
+  <span class="section-title" (click)="fillTextarea()">
+    <span *ngIf="isNotAPage()" class="glyphicon glyphicon-folder-open"></span>
+    <span *ngIf="isAPage()" class="glyphicon glyphicon-file"></span>
+    {{ tree.title }}
+  </span>
   <span class="glyphicon glyphicon-remove text-danger" [style.display]="titleBarVisibility"></span>
-  <span class="glyphicon glyphicon-pencil text-primary" [style.display]="titleBarVisibility" (click)="fillTextarea()"></span>
+  <!-- <span class="glyphicon glyphicon-pencil text-primary" [style.display]="titleBarVisibility" (click)="fillTextarea()"></span> -->
 </span>
 
 <ul *ngIf="isNotAPage()">
@@ -11,6 +13,6 @@
     <tree-view [tree]="branch"></tree-view>
   </li>
   <li>
-    <span class="glyphicon glyphicon-plus"></span><button (click)="addSection()">S</button><button (click)="addPage()">P</button>
+    <span class="glyphicon glyphicon-plus"></span><div class="btn-group btn-group-xs"><button type="button" (click)="addSection()" class="btn btn-primary">S</button><button type="button" (click)="addPage()" class="btn btn-primary">P</button></div>
   </li>
 </ul>

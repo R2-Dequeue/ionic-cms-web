@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GuiService {
 
-  constructor() { console.log('GuiService started'); }
+  constructor() { }
 
   public branch: any;
   public title: string = '';
@@ -17,10 +17,12 @@ export class GuiService {
   }
 
   populateModel() {
-    this.branch.title = this.title;
+    if (typeof this.branch !== 'undefined') {
+      this.branch.title = this.title;
 
-    if (typeof this.branch['data'] !== 'undefined')
-      this.branch.data = this.data;
+      if (typeof this.branch['data'] !== 'undefined')
+        this.branch.data = this.data;
+    }
   }
 
 }
