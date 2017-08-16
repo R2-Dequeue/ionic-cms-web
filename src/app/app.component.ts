@@ -15,9 +15,14 @@ export class AppComponent {
   documentRoot: any = { title: '', items: [] };
   objectObservable: FirebaseObjectObservable<any>;
 
-  constructor(db: AngularFireDatabase, private guiService: GuiService) {
+  /**
+   * @todo Add error handling to `.once` call.
+   * @param db 
+   * @param guiService 
+   */
+    constructor(db: AngularFireDatabase, private guiService: GuiService) {
     this.objectObservable = db.object('/pharmacopeia');
-    this.objectObservable.$ref.on('value', snapshot => this.documentRoot = snapshot.val());
+    this.objectObservable.$ref.once('value', snapshot => this.documentRoot = snapshot.val());
   }
 
   logDocument() {
