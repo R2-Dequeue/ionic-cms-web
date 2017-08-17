@@ -5,7 +5,7 @@
     {{ tree.title }}
   </span>
   <span class="glyphicon glyphicon-remove text-danger" [style.display]="titleBarVisibility"></span>
-  <!-- <span class="glyphicon glyphicon-pencil text-primary" [style.display]="titleBarVisibility" (click)="fillTextarea()"></span> -->
+  <span class="glyphicon glyphicon-pencil text-primary" [style.display]="titleBarVisibility" (click)="editTitle()"></span>
 </span>
 
 <ul *ngIf="isNotAPage()">

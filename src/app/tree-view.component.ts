@@ -43,7 +43,21 @@ export class TreeViewComponent {
   }
 
   saveData() {
-    this.guiService.populateModel();
+    this.guiService.updateModel();
+  }
+
+  /**
+   * Field a modal dialog to edit the title of a Section or Page.
+   */
+  editTitle() {
+  }
+
+  /**
+   * Delete a Page or a Section and all it's children.
+   */
+  deleteNode() {
+    // "Are you certain you want to delete \"Page Name\"?"
+    // "Are you certain you want to delete \"Section Name\" and all its contents?"
   }
 
 }

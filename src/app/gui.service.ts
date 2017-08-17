@@ -12,13 +12,13 @@ export class GuiService {
   populateView(branch: any) {
     this.branch = branch;
 
-    this.title = this.branch.title;
+    //this.title = this.branch.title;
     this.data = this.branch.data;
   }
 
-  populateModel() {
+  updateModel() {
     if (typeof this.branch !== 'undefined') {
-      this.branch.title = this.title;
+      //this.branch.title = this.title;
 
       if (typeof this.branch['data'] !== 'undefined')
         this.branch.data = this.data;

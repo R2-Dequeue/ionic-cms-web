@@ -12,17 +12,22 @@ import { GuiService } from './gui.service';
 })
 export class AppComponent {
   title: string = 'app';
-  documentRoot: any = { title: '', items: [] };
+  documentRoot: any = { title: 'Loading...', items: [] };
   objectObservable: FirebaseObjectObservable<any>;
+  dataModified = 'disabled';
 
   /**
    * @todo Add error handling to `.once` call.
    * @param db 
    * @param guiService 
    */
-    constructor(db: AngularFireDatabase, private guiService: GuiService) {
+  constructor(db: AngularFireDatabase, private guiService: GuiService) {
     this.objectObservable = db.object('/pharmacopeia');
     this.objectObservable.$ref.once('value', snapshot => this.documentRoot = snapshot.val());
+  }
+
+  upload() {
+    this.objectObservable.set(this.documentRoot);
   }
 
   logDocument() {
