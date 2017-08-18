@@ -1,65 +1,61 @@
 <div class="container" style="width: auto;">
-<h1 style="padding: 1em;">Document Editor</h1>
-<div style="width: 40em; vertical-align: top; display: inline-block;">
-  <ul style="list-style-type: none;">
-    <li>
-      <tree-view [tree]="documentRoot"></tree-view>
-    </li>
-  </ul>
+  <h1 style="padding: 1em;">Document Editor</h1>
+  <div style="width: 40em; vertical-align: top; display: inline-block;">
+    <ul style="list-style-type: none;">
+      <li>
+        <tree-view [tree]="documentRoot"></tree-view>
+      </li>
+    </ul>
+    <br>
+    <ul style="list-style-type: none;">
+      <li>
+        <button type="button" class="btn btn-primary" (click)="upload();" [disabled]="state.uploadDisabled">Upload changes</button>
+      </li>
+    </ul>
+  </div>
+  <div style="width: 400px; display: inline-block;">
+    <form>
+      <div class="form-group">
+        <label for="pageInput">Page</label>
+        <textarea id="pageInput" name="pageInput" [(ngModel)]="guiService.data" style="width: 320px; height: 600px" class="form-control" placeholder="Drug information" [disabled]="state.pageDisabled"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="guiService.updateModel()" [disabled]="state.submitPageDisabled">⟵ Store</button>
+      <!-- Save, Stash, Store -->
+    </form>
+  </div>
   <br>
-  <ul style="list-style-type: none;">
-    <li>
-      <button type="button" class="btn btn-primary" (click)="upload();" [disabled]="dataModified">Upload changes</button>
-    </li>
-  </ul>
+  <br>
+  <hr>
+  <br>
+  <button class="btn btn-primary" (click)="logDocument()">Log</button><br>
+  <br>
+  <span class="glyphicon glyphicon-file"></span>
+  <span class="glyphicon glyphicon-folder-close"></span>
+  <span class="glyphicon glyphicon-folder-open"></span>
+  <span class="glyphicon glyphicon-list"></span>
+  <span class="glyphicon glyphicon-file"></span>
+  <br>
+  <table>
+    <tr>
+      <td>key</td>
+      <td>{{ objectObservable.$ref.key }}</td>
+    </tr>
+    <tr>
+      <td>parent</td>
+      <td>{{ objectObservable.$ref.parent }}</td>
+    </tr>
+    <tr>
+      <td>path</td>
+      <td>{{ objectObservable.$ref.path }}</td>
+    </tr>
+    <tr>
+      <td>ref</td>
+      <td>{{ objectObservable.$ref.ref }}</td>
+    </tr>
+    <tr>
+      <td>root</td>
+      <td>{{ objectObservable.$ref.root }}</td>
+    </tr>
+  </table>
+  <div style="margin-bottom: 10em;"></div>
 </div>
-<div style="width: 400px; display: inline-block;">
-  <form>
-    <!-- <div class="form-group">
-      <label for="titleInput">Title</label>
-      <input type="text" id="titleInput" name="titleInput" [(ngModel)]="guiService.title" class="form-control" placeholder="Pharmacological Name" required>
-    </div> -->
-    <div class="form-group">
-      <label for="pageInput">Page</label>
-      <textarea id="pageInput" name="pageInput" [(ngModel)]="guiService.data" style="width: 320px; height: 600px" class="form-control" placeholder="Drug information"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="guiService.populateModel()">Save</button>
-  </form>
-</div>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<button class="btn btn-primary" (click)="logDocument()">Log</button><br>
-<br>
-<span class="glyphicon glyphicon-file"></span>
-<span class="glyphicon glyphicon-folder-close"></span>
-<span class="glyphicon glyphicon-folder-open"></span>
-<span class="glyphicon glyphicon-list"></span>
-<span class="glyphicon glyphicon-file"></span>
-<br>
-<table>
-  <tr>
-    <td>key</td>
-    <td>{{ objectObservable.$ref.key }}</td>
-  </tr>
-  <tr>
-    <td>parent</td>
-    <td>{{ objectObservable.$ref.parent }}</td>
-  </tr>
-  <tr>
-    <td>path</td>
-    <td>{{ objectObservable.$ref.path }}</td>
-  </tr>
-  <tr>
-    <td>ref</td>
-    <td>{{ objectObservable.$ref.ref }}</td>
-  </tr>
-  <tr>
-    <td>root</td>
-    <td>{{ objectObservable.$ref.root }}</td>
-  </tr>
-</table>
-<div style="margin-bottom: 10em;"></div>
-

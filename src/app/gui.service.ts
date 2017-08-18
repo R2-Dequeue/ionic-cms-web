@@ -9,20 +9,36 @@ export class GuiService {
   public title: string = '';
   public data: string = '';
 
+  private state: any;
+
+  setState(state: any) {
+    this.state = state;
+  }
+
   populateView(branch: any) {
     this.branch = branch;
 
-    //this.title = this.branch.title;
     this.data = this.branch.data;
+    this.enablePage();
+    this.markPagePristine();
   }
 
   updateModel() {
     if (typeof this.branch !== 'undefined') {
-      //this.branch.title = this.title;
-
-      if (typeof this.branch['data'] !== 'undefined')
+      if (typeof this.branch['data'] !== 'undefined') {
         this.branch.data = this.data;
+        this.markPagePristine();
+      }
     }
+  }
+
+  enablePage() {
+    this.state.pageDisabled = false;
+    this.state.submitPageDisabled = false;
+  }
+
+  markPagePristine() {
+    //this.state.submitPageDisabled = true;
   }
 
 }
