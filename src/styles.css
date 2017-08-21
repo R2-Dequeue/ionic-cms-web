@@ -1,26 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
-
 .no-bullets {
   list-style-type: none;
 }
-
-/* body {
-  margin: 1em;
-} */
-
-/* ul {
-  list-style-type: none;
-  border-left: 1px solid black;
-  padding-left: 1.5em;
-} */
-
-/* * {
-  line-height: 1.5;
-}
-
-button
-{
-  line-height: 0.8;
-} */

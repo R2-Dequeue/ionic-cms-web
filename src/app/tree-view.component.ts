@@ -13,8 +13,7 @@ export class TreeViewComponent {
   tree: any;
   titleBarVisibility: string = 'none';
 
-  constructor(private guiService: GuiService) {
-  }
+  constructor(private guiService: GuiService) {}
 
   isAPage() {
     return typeof this.tree['data'] !== 'undefined';
@@ -27,15 +26,21 @@ export class TreeViewComponent {
   addSection() {
     if (typeof this.tree['items'] === 'undefined')
       this.tree['items'] = [];
-    
-    this.tree.items.push({ title: 'A New Section', items: []});
+
+    let response = prompt('Please enter a non-empty name for this section:');
+
+    if (response !== null && response !== '')
+      this.tree.items.push({ title: response.trim(), items: []});
   }
 
   addPage() {
     if (typeof this.tree['items'] === 'undefined')
       this.tree['items'] = [];
 
-    this.tree.items.push({ title: 'A New Page', data: 'Detailed medical information' });
+    let response = prompt('Please enter a non-empty name for this page:');
+
+    if (response !== null && response !== '')
+      this.tree.items.push({ title: response.trim(), data: '"The world is but a canvas to the imagination."' });
   }
   
   fillTextarea() {
@@ -48,16 +53,23 @@ export class TreeViewComponent {
 
   /**
    * Field a modal dialog to edit the title of a Section or Page.
+   * 
+   * @todo *Possibly* escape string html characters.
    */
   editTitle() {
+    let response = prompt('Please enter a new name:', this.tree['title']);
+
+    if (response !== null && response !== '')
+      this.tree['title'] = response.trim();
   }
 
   /**
    * Delete a Page or a Section and all it's children.
    */
   deleteNode() {
-    // "Are you certain you want to delete \"Page Name\"?"
-    // "Are you certain you want to delete \"Section Name\" and all its contents?"
+    if (confirm('Are you certain you want to delete "' + this.tree['title'] + '" and everything it contains?') === true) {
+      ;
+    }
   }
 
 }
