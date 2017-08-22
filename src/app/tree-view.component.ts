@@ -23,6 +23,8 @@ export class TreeViewComponent {
     return typeof this.tree['data'] === 'undefined';
   }
 
+  isASection() { return this.isNotAPage(); }
+
   addSection() {
     if (typeof this.tree['items'] === 'undefined')
       this.tree['items'] = [];
@@ -43,8 +45,9 @@ export class TreeViewComponent {
       this.tree.items.push({ title: response.trim(), data: '"The world is but a canvas to the imagination."' });
   }
   
-  fillTextarea() {
-    this.guiService.populateView(this.tree);
+  fillPageData() {
+    if (this.isAPage())
+      this.guiService.populateView(this.tree);
   }
 
   saveData() {
