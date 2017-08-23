@@ -1,6 +1,6 @@
 <div class="container" style="width: auto;">
   <h1 style="padding: 1em;">Document Editor</h1>
-  <div style="width: 40em; vertical-align: top; display: inline-block;">
+  <div style="width: 30em; vertical-align: top; display: inline-block;">
     <ul style="list-style-type: none;">
       <li>
         <tree-view [tree]="documentRoot"></tree-view>
@@ -13,11 +13,13 @@
       </li>
     </ul>
   </div>
-  <div style="width: 400px; display: inline-block;">
+  <div style="display: inline-block; width: 60em; height: 60em;">
     <form>
       <div class="form-group">
         <label for="pageInput">Page</label>
-        <textarea id="pageInput" name="pageInput" [(ngModel)]="guiService.data" style="width: 320px; height: 600px" class="form-control" placeholder="Drug information" [disabled]="state.pageDisabled"></textarea>
+        <!-- <textarea id="pageInput" name="pageInput" [(ngModel)]="guiService.data" style="width: 320px; height: 600px" class="form-control" placeholder="Drug information" [disabled]="state.pageDisabled"></textarea> -->
+        <!-- <quill-editor id="pageInput" name="pageInput"  [style]="{ height: '400px' }"></quill-editor> -->
+        <div id="quillPageEditor" style="height: 60em;"></div>
       </div>
       <button type="submit" class="btn btn-primary" (click)="guiService.updateModel()" [disabled]="state.submitPageDisabled">⟵ Store</button>
       <!-- Save, Stash, Store -->
@@ -29,10 +31,6 @@
   <br>
   <button class="btn btn-primary" (click)="logDocument()">Log</button><br>
   <br>
-  <span class="glyphicon glyphicon-file"></span>
-  <span class="glyphicon glyphicon-folder-close"></span>
-  <span class="glyphicon glyphicon-folder-open"></span>
-  <span class="glyphicon glyphicon-list"></span>
-  <span class="glyphicon glyphicon-file"></span>
+  <span class="glyphicon glyphicon-file"></span><span class="glyphicon glyphicon-folder-close"></span><span class="glyphicon glyphicon-folder-open"></span><span class="glyphicon glyphicon-list"></span><span class="glyphicon glyphicon-file"></span>
   <div style="margin-bottom: 10em;"></div>
 </div>
