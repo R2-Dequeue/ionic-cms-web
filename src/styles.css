@@ -3,3 +3,7 @@
 .no-bullets {
   list-style-type: none;
 }
+
+#quillHTML p {
+  margin: 0px;
+}

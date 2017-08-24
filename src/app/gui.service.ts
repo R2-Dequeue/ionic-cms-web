@@ -1,44 +1,49 @@
 import { Injectable } from '@angular/core';
 
+import * as Quill from 'quill';
+
 @Injectable()
 export class GuiService {
-
-  constructor() { }
-
   public branch: any;
-  public title: string = '';
   public data: string = '';
 
-  private state: any;
+  public state: any;
+  private pageEditor: Quill;
 
   setState(state: any) {
     this.state = state;
   }
 
-  populateView(branch: any) {
+  setEditor(editor) {
+    this.pageEditor = editor;
+  }
+
+  updateView(branch: any) {
     this.branch = branch;
 
-    this.data = this.branch.data;
+    this.pageEditor.setContents(JSON.parse(this.branch.data));
+
     this.enablePage();
     this.markPagePristine();
   }
 
   updateModel() {
-    if (typeof this.branch !== 'undefined') {
+    if (typeof this.branch !== 'undefined')
       if (typeof this.branch['data'] !== 'undefined') {
-        this.branch.data = this.data;
+        this.branch.data = JSON.stringify(this.pageEditor.getContents());
+        this.branch.dataHTML = document.querySelector('#quillPageEditor .ql-editor').innerHTML;
+
         this.markPagePristine();
+        this.state.uploadButtonDisabled = false;
       }
-    }
   }
 
   enablePage() {
     this.state.pageDisabled = false;
-    this.state.submitPageDisabled = false;
   }
 
   markPagePristine() {
-    //this.state.submitPageDisabled = true;
+    this.state.storeButtonDisabled = true;
   }
 
 }

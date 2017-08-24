@@ -9,21 +9,23 @@
     <br>
     <ul style="list-style-type: none;">
       <li>
-        <button type="button" class="btn btn-primary" (click)="upload();" [disabled]="state.uploadDisabled">Upload changes</button>
+        <button type="button" class="btn btn-primary" (click)="upload();" [disabled]="state.uploadButtonDisabled">Upload changes</button>
       </li>
     </ul>
   </div>
-  <div style="display: inline-block; width: 60em; height: 60em;">
+  <div style="display: inline-block; width: 40em; height: 40em;">
     <form>
       <div class="form-group">
         <label for="pageInput">Page</label>
         <!-- <textarea id="pageInput" name="pageInput" [(ngModel)]="guiService.data" style="width: 320px; height: 600px" class="form-control" placeholder="Drug information" [disabled]="state.pageDisabled"></textarea> -->
         <!-- <quill-editor id="pageInput" name="pageInput"  [style]="{ height: '400px' }"></quill-editor> -->
-        <div id="quillPageEditor" style="height: 60em;"></div>
+        <div id="quillPageEditor" style="height: 40em;"></div>
       </div>
-      <button type="submit" class="btn btn-primary" (click)="guiService.updateModel()" [disabled]="state.submitPageDisabled">⟵ Store</button>
+      <button type="submit" class="btn btn-primary" (click)="guiService.updateModel()" [disabled]="state.storeButtonDisabled">⟵ Store</button>
       <!-- Save, Stash, Store -->
     </form>
+    <br>
+    <div id="quillHTML" style="border: 1px solid black;"></div>
   </div>
   <br>
   <br>

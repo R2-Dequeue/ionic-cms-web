@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import * as Quill from 'quill';
+
 import { GuiService } from './gui.service';
 
 @Component({
@@ -31,8 +33,12 @@ export class TreeViewComponent {
 
     let response = prompt('Please enter a non-empty name for this section:');
 
-    if (response !== null && response !== '')
+    if (response !== null && response !== '') {
       this.tree.items.push({ title: response.trim(), items: []});
+
+      if (this.guiService.state.storeButtonDisabled === true)
+        this.guiService.state.uploadButtonDisabled = false;
+    }
   }
 
   addPage() {
@@ -41,13 +47,17 @@ export class TreeViewComponent {
 
     let response = prompt('Please enter a non-empty name for this page:');
 
-    if (response !== null && response !== '')
-      this.tree.items.push({ title: response.trim(), data: '"The world is but a canvas to the imagination."' });
+    if (response !== null && response !== '') {
+      this.tree.items.push({ title: response.trim(), data: null, dataHTML: '' });
+
+      if (this.guiService.state.storeButtonDisabled === true)
+        this.guiService.state.uploadButtonDisabled = false;
+    }
   }
   
   fillPageData() {
     if (this.isAPage())
-      this.guiService.populateView(this.tree);
+      this.guiService.updateView(this.tree);
   }
 
   saveData() {
@@ -64,6 +74,8 @@ export class TreeViewComponent {
 
     if (response !== null && response !== '')
       this.tree['title'] = response.trim();
+
+    // disable/enable form elements
   }
 
   /**
@@ -73,6 +85,8 @@ export class TreeViewComponent {
     if (confirm('Are you certain you want to delete "' + this.tree['title'] + '" and everything it contains?') === true) {
       ;
     }
+
+    // disable/enable form elements
   }
 
 }

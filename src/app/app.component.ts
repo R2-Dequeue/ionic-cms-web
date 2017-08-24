@@ -17,11 +17,11 @@ export class AppComponent implements AfterViewInit {
   objectObservable: FirebaseObjectObservable<any>;
   documentsObservable: FirebaseListObservable<any>;
   state: any = {
-    uploadDisabled: false,
+    uploadButtonDisabled: true,
     pageDisabled: true,
-    submitPageDisabled: true
+    storeButtonDisabled: true
   };
-  pageEditor;
+  private pageEditor: Quill;
   emptyArray = [];
 
   /**
@@ -30,8 +30,13 @@ export class AppComponent implements AfterViewInit {
    * @param guiService 
    */
   constructor(private db: AngularFireDatabase, private guiService: GuiService) {
-    this.objectObservable = db.object('/pharmacopeia');
-    this.objectObservable.$ref.once('value', snapshot => this.documentRoot = snapshot.val());
+    this.objectObservable = db.object('/pharm_test_3/documents');
+    this.objectObservable.$ref.once('value', snapshot => {
+      if (snapshot.val())
+        this.documentRoot = snapshot.val();
+      else
+        this.documentRoot = { title: 'New', items: [] };
+    });
 
     guiService.setState(this.state);
   }
@@ -63,10 +68,18 @@ export class AppComponent implements AfterViewInit {
       ]
     };
     this.pageEditor = new Quill('#quillPageEditor', { theme: 'snow' });
+    this.guiService.setEditor(this.pageEditor);
+    this.pageEditor.on('text-change', () => {
+      this.state.storeButtonDisabled = false;
+      this.state.uploadButtonDisabled = true;
+
+      document.getElementById('quillHTML').innerHTML = document.querySelector('#quillPageEditor .ql-editor').innerHTML;
+    });
   }
 
   upload() {
     this.objectObservable.set(this.documentRoot);
+    this.state.uploadButtonDisabled = true;
   }
 
   logDocument() {
