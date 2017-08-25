@@ -1,9 +1,12 @@
 <div class="container" style="width: auto;">
-  <h1 style="padding: 1em;">Document Editor</h1>
+  <h1>Library Editor</h1>
   <div style="width: 30em; vertical-align: top; display: inline-block;">
     <ul style="list-style-type: none;">
-      <li>
-        <tree-view [tree]="documentRoot"></tree-view>
+      <li *ngIf="documentRoot">
+        <tree-view [parent]="null" [tree]="documentRoot"></tree-view>
+      </li>
+      <li *ngIf="!documentRoot">
+        Loading documents...
       </li>
     </ul>
     <br>
@@ -16,16 +19,13 @@
   <div style="display: inline-block; height: 40em;">
     <form>
       <div class="form-group">
-        <label for="pageInput">Page</label>
-        <!-- <textarea id="pageInput" name="pageInput" [(ngModel)]="guiService.data" style="width: 320px; height: 600px" class="form-control" placeholder="Drug information" [disabled]="state.pageDisabled"></textarea> -->
-        <!-- <quill-editor id="pageInput" name="pageInput"  [style]="{ height: '400px' }"></quill-editor> -->
+        <label for="quillPageEditor">Page</label>
         <div id="quillPageEditor" style="height: 40em;"></div>
       </div>
       <button type="submit" class="btn btn-primary" (click)="guiService.updateModel()" [disabled]="state.storeButtonDisabled">⟵ Store</button>
-      <!-- Save, Stash, Store -->
     </form>
     <br>
-    <label for="quillHTML">Mobile <em>approximation</em>:</label>
+    <label for="quillHTML">Mobile display <em>approximation</em>:</label>
     <div id="quillHTML"></div>
   </div>
   <br>
@@ -39,5 +39,11 @@
   <span class="glyphicon glyphicon-folder-open"></span>
   <span class="glyphicon glyphicon-list"></span>
   <span class="glyphicon glyphicon-file"></span>
+  <span class="glyphicon glyphicon-chevron-up"></span>
+  <span class="glyphicon glyphicon-chevron-down"></span>
+  <span class="glyphicon glyphicon-arrow-up"></span>
+  <span class="glyphicon glyphicon-arrow-down"></span>
+  <span class="glyphicon glyphicon-menu-up"></span>
+  <span class="glyphicon glyphicon-menu-down"></span>
   <div style="margin-bottom: 10em;"></div>
 </div>

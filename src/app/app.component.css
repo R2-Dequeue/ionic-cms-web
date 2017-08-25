@@ -19,5 +19,9 @@ td {
   width: 320px;
   height: 568px;
   
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
 }
+
+/*font-family: "San Francisco", "Helvetica Neue", "Sans-Serif"
+font-family: Serif
+font-family: Monospace*/

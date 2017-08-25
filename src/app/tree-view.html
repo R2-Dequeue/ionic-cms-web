@@ -8,15 +8,17 @@
     <span class="underlined">{{ tree.title }}</span>
   </span>
 
-  <span class="pointer-cursor glyphicon glyphicon-remove text-danger" [style.display]="titleBarVisibility" (click)="deleteNode()"></span>
+  <span class="pointer-cursor glyphicon glyphicon-arrow-up" [style.display]="titleBarVisibility" (click)="moveNode(-1)" *ngIf="isNotFirst()"></span>
+  <span class="pointer-cursor glyphicon glyphicon-arrow-down" [style.display]="titleBarVisibility" (click)="moveNode(1)" *ngIf="isNotLast()"></span>
+  <span class="pointer-cursor glyphicon glyphicon-remove text-danger" [style.display]="titleBarVisibility" (click)="deleteNode()" *ngIf="parent"></span>
   <span class="pointer-cursor glyphicon glyphicon-pencil text-primary" [style.display]="titleBarVisibility" (click)="editTitle()"></span>
 </span>
 
 <ul *ngIf="isNotAPage()">
   <li *ngFor="let branch of tree.items">
-    <tree-view [tree]="branch"></tree-view>
+    <tree-view [parent]="tree" [tree]="branch"></tree-view>
   </li>
   <li>
-    <span class="glyphicon glyphicon-plus"></span><div class="btn-group btn-group-xs"><button type="button" (click)="addSection()" class="btn btn-primary">S</button><button type="button" (click)="addPage()" class="btn btn-primary">P</button></div>
+    <div class="btn-group btn-group-xs"><button type="button" (click)="addSection()" class="btn btn-primary">+ S</button><button type="button" (click)="addPage()" class="btn btn-primary">+ P</button></div>
   </li>
 </ul>

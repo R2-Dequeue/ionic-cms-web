@@ -13,16 +13,17 @@ import { GuiService } from './gui.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
-  documentRoot: any = { title: 'Loading...', items: [] };
-  objectObservable: FirebaseObjectObservable<any>;
-  documentsObservable: FirebaseListObservable<any>;
+  documentRoot: any = null;
+  //documentParent = { title: '', items: [this.documentRoot]};
   state: any = {
     uploadButtonDisabled: true,
     pageDisabled: true,
     storeButtonDisabled: true
   };
+
+  objectObservable: FirebaseObjectObservable<any>;
+  documentsObservable: FirebaseListObservable<any>;
   private pageEditor: Quill;
-  emptyArray = [];
 
   /**
    * @todo Add error handling to `.once` call.
@@ -35,7 +36,7 @@ export class AppComponent implements AfterViewInit {
       if (snapshot.val())
         this.documentRoot = snapshot.val();
       else
-        this.documentRoot = { title: 'New', items: [] };
+        this.documentRoot = { title: 'New Section', items: [] };
     });
 
     guiService.setState(this.state);
@@ -45,27 +46,6 @@ export class AppComponent implements AfterViewInit {
     // ql-toolbar, ql-container
 
     let toolbarOptions = [
-      ['bold', 'italic', 'underline', 'strike',
-        { 'script': 'super'}, { 'script': 'sub' }],
-      [{ 'color': this.emptyArray.slice() }, { 'background': this.emptyArray.slice() }],
-      ['blockquote', 'code-block'],
-
-      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-      [{ 'direction': 'rtl' }],                         // text direction
-
-      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      
-      [{ 'font': this.emptyArray.slice() }],
-      [{ 'align': this.emptyArray.slice() }],
-
-      ['clean'],                                         // remove formatting button
-
-      ['link', 'image', 'video']                         // link and image, video
-    ];
-    toolbarOptions = [
       [{ 'font': [] }],
       [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons

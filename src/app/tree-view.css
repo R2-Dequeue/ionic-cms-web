@@ -9,6 +9,13 @@
 /* papyrus EEDFA6 */
 .glyphicon.glyphicon-folder-open {
   color: #f1d592;
+  font-size: 130%;
+  margin-right: 0.25em;
+}
+
+.glyphicon.glyphicon-file {
+  color: #C1BEBB;
+  /* font-size: 130%; */
 }
 
 ul {

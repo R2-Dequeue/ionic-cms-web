@@ -8,6 +8,7 @@ export class GuiService {
   public data: string = '';
 
   public state: any;
+  
   private pageEditor: Quill;
 
   setState(state: any) {

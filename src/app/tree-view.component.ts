@@ -12,6 +12,8 @@ import { GuiService } from './gui.service';
 export class TreeViewComponent {
 
   @Input()
+  parent: any;
+  @Input()
   tree: any;
   titleBarVisibility: string = 'none';
 
@@ -82,11 +84,46 @@ export class TreeViewComponent {
    * Delete a Page or a Section and all it's children.
    */
   deleteNode() {
-    if (confirm('Are you certain you want to delete "' + this.tree['title'] + '" and everything it contains?') === true) {
-      ;
-    }
+    if (this.parent)
+      if (confirm('Are you certain you want to delete "' + this.tree['title'] + '" and everything it contains?') === true) {
+        for (let i = 0; i < this.parent.items.length; ++i) {
+          if (this.parent.items[i] === this.tree) {
+            this.parent.items.splice(i, 1);
+            break;
+          }
+        }
+      }
 
     // disable/enable form elements
+  }
+
+  isNotFirst() {
+    if (this.parent && this.parent['items'] && this.parent.items.length >= 1)
+      if (this.parent.items[0] !== this.tree)
+        return true;
+
+    return false;
+  }
+
+  isNotLast() {
+    if (this.parent && this.parent['items'] && this.parent.items.length >= 1)
+      if (this.parent.items[this.parent.items.length - 1] !== this.tree)
+        return true;
+
+    return false;
+  }
+
+  moveNode(offset: number) {
+    if (this.parent && this.parent['items'] && this.parent.items.length >= 1)
+      for (let i = 0; i < this.parent.items.length; ++i) {
+        if (this.parent.items[i] === this.tree) {
+          let original = this.parent.items[i];
+          this.parent.items[i] = this.parent.items[i + offset];
+          this.parent.items[i + offset] = original;
+
+          break;
+        }
+      }
   }
 
 }
