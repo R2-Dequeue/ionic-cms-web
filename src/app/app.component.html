@@ -1,35 +1,42 @@
-<div class="container" style="width: auto;">
-  <h1>Library Editor</h1>
-  <div style="width: 30em; vertical-align: top; display: inline-block;">
-    <ul style="list-style-type: none;">
-      <li *ngIf="documentRoot">
-        <tree-view [parent]="null" [tree]="documentRoot"></tree-view>
-      </li>
-      <li *ngIf="!documentRoot">
-        Loading documents...
-      </li>
-    </ul>
-    <br>
-    <ul style="list-style-type: none;">
-      <li>
-        <button type="button" class="btn btn-primary" (click)="upload();" [disabled]="state.uploadButtonDisabled">Upload changes</button>
-      </li>
-    </ul>
+<nav class="navbar navbar-light bg-faded"><!-- navbar navbar-light bg-faded rounded navbar-toggleable-md -->
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <div class="navbar-brand" style="font-size: 24pt; line-height: normal;">Library Editor</div>
+    </div>
   </div>
-  <div style="display: inline-block; height: 40em;">
-    <form>
-      <div class="form-group">
-        <label for="quillPageEditor">Page</label>
-        <div id="quillPageEditor" style="height: 40em;"></div>
-      </div>
-      <button type="submit" class="btn btn-primary" (click)="guiService.updateModel()" [disabled]="state.storeButtonDisabled">⟵ Store</button>
-    </form>
-    <br>
-    <label for="quillHTML">Mobile display <em>approximation</em>:</label>
-    <div id="quillHTML"></div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <ul style="list-style-type: none;">
+        <li *ngIf="documentRoot">
+          <tree-view [parent]="null" [tree]="documentRoot"></tree-view>
+        </li>
+        <li *ngIf="!documentRoot">
+          Loading documents...
+        </li>
+      </ul>
+      <ul style="list-style-type: none;">
+        <li>
+          <button type="button" class="btn btn-primary" (click)="upload();" [disabled]="state.uploadButtonDisabled">Upload changes</button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <form>
+        <div class="form-group">
+          <label for="quillPageEditor">Page</label>
+          <div id="quillPageEditor" style="height: 20em;"></div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="guiService.updateModel()" [disabled]="state.storeButtonDisabled">⟵ Save</button>
+      </form>
+      <br>
+      <label for="quillHTML">Mobile display <em>approximation</em>:</label>
+      <div id="quillHTML"></div>
+    </div>
   </div>
-  <br>
-  <br>
+</div>
+<div class="container-fluid">
   <hr>
   <br>
   <button class="btn btn-primary" (click)="logDocument()">Log</button><br>
