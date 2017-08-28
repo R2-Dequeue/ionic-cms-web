@@ -1,0 +1,3 @@
+<button (click)="userIsAuthenticated = !userIsAuthenticated" class="btn btn-primary">Toggle Authentication</button>
+<app-login *ngIf="!userIsAuthenticated"></app-login>
+<app-editor *ngIf="userIsAuthenticated"></app-editor>

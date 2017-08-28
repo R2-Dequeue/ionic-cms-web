@@ -1,0 +1,27 @@
+input[type="text"].ng-pristine, textarea.ng-pristine {
+  border-left: 5px solid #42A948;
+}
+
+input[type="text"].ng-dirty, textarea.ng-dirty {
+  border-left: 5px solid #a94442;
+}
+
+td {
+  padding: 0.25em;
+}
+
+#quillHTML {
+  border: 1px solid black;
+  padding: 20px;
+  line-height: normal;
+
+  /* iPhone 5 *logical* resolution */
+  width: 320px;
+  height: 568px;
+  
+  /* word-wrap: break-word; */
+}
+
+/*font-family: "San Francisco", "Helvetica Neue", "Sans-Serif"
+font-family: Serif
+font-family: Monospace*/

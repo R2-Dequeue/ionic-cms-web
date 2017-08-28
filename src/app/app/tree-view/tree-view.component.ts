@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import * as Quill from 'quill';
 
-import { GuiService } from './gui.service';
+import { GuiService } from '../../services/gui/gui.service';
 
 @Component({
   selector: 'tree-view',

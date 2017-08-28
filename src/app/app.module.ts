@@ -5,16 +5,20 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { AppComponent } from './app.component';
-import { TreeViewComponent } from './tree-view.component';
+import { AppComponent } from './app/app.component';
+import { LoginComponent } from './app/login/login.component';
+import { EditorComponent } from './app/editor/editor.component';
+import { TreeViewComponent } from './app/tree-view/tree-view.component';
 
-import { GuiService } from './gui.service';
+import { GuiService } from './services/gui/gui.service';
 
 import { firebaseConfig } from '../assets/authenticate';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    EditorComponent,
     TreeViewComponent
   ],
   imports: [

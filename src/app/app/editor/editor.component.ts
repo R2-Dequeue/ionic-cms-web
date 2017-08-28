@@ -1,20 +1,19 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 import * as Quill from 'quill';
 
-import { GuiService } from './gui.service';
+import { GuiService } from '../../services/gui/gui.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-editor',
+  templateUrl: './editor.component.html',
+  styleUrls: ['./editor.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class EditorComponent implements OnInit {
   documentRoot: any = null;
-  //documentParent = { title: '', items: [this.documentRoot]};
   state: any = {
     uploadButtonDisabled: true,
     pageDisabled: true,
@@ -31,6 +30,7 @@ export class AppComponent implements AfterViewInit {
    * @param guiService 
    */
   constructor(private db: AngularFireDatabase, private guiService: GuiService) {
+    console.log('EditorComponent constructed');
     this.objectObservable = db.object('/pharm_test_3/documents');
     this.objectObservable.$ref.once('value', snapshot => {
       if (snapshot.val())
@@ -78,5 +78,8 @@ export class AppComponent implements AfterViewInit {
 
   logDocument() {
     console.log(this.documentRoot);
+  }
+
+  ngOnInit() {
   }
 }
