@@ -31,7 +31,7 @@ export class EditorComponent implements OnInit {
    */
   constructor(private db: AngularFireDatabase, private guiService: GuiService) {
     console.log('EditorComponent constructed');
-    this.objectObservable = db.object('/pharm_test_3/documents');
+    this.objectObservable = db.object('/documents/pharmacopeia');
     this.objectObservable.$ref.once('value', snapshot => {
       if (snapshot.val())
         this.documentRoot = snapshot.val();
