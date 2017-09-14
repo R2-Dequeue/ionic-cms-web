@@ -9,5 +9,5 @@ import { LoginComponent } from './login/login.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private userIsAuthenticated: Boolean = false;
+  public userIsAuthenticated: Boolean = false;
 }

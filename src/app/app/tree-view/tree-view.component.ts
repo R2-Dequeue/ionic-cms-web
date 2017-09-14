@@ -37,9 +37,8 @@ export class TreeViewComponent {
 
     if (response !== null && response !== '') {
       this.tree.items.push({ title: response.trim(), items: []});
-
-      if (this.guiService.state.storeButtonDisabled === true)
-        this.guiService.state.uploadButtonDisabled = false;
+      
+      this.guiService.markTreeDirty();
     }
   }
 
@@ -52,8 +51,7 @@ export class TreeViewComponent {
     if (response !== null && response !== '') {
       this.tree.items.push({ title: response.trim(), data: null, dataHTML: '' });
 
-      if (this.guiService.state.storeButtonDisabled === true)
-        this.guiService.state.uploadButtonDisabled = false;
+      this.guiService.markTreeDirty();
     }
   }
   
@@ -74,10 +72,10 @@ export class TreeViewComponent {
   editTitle() {
     let response = prompt('Please enter a new name:', this.tree['title']);
 
-    if (response !== null && response !== '')
+    if (response !== null && response !== '') {
       this.tree['title'] = response.trim();
-
-    // disable/enable form elements
+      this.guiService.markTreeDirty();
+    }
   }
 
   /**
@@ -89,12 +87,26 @@ export class TreeViewComponent {
         for (let i = 0; i < this.parent.items.length; ++i) {
           if (this.parent.items[i] === this.tree) {
             this.parent.items.splice(i, 1);
+            this.guiService.markTreeDirty();
+
             break;
           }
         }
       }
+  }
+  
+  moveNode(offset: number) {
+    if (this.parent && this.parent['items'] && this.parent.items.length >= 1)
+      for (let i = 0; i < this.parent.items.length; ++i) {
+        if (this.parent.items[i] === this.tree) {
+          let original = this.parent.items[i];
+          this.parent.items[i] = this.parent.items[i + offset];
+          this.parent.items[i + offset] = original;
+          this.guiService.markTreeDirty();
 
-    // disable/enable form elements
+          break;
+        }
+      }
   }
 
   isNotFirst() {
@@ -111,19 +123,6 @@ export class TreeViewComponent {
         return true;
 
     return false;
-  }
-
-  moveNode(offset: number) {
-    if (this.parent && this.parent['items'] && this.parent.items.length >= 1)
-      for (let i = 0; i < this.parent.items.length; ++i) {
-        if (this.parent.items[i] === this.tree) {
-          let original = this.parent.items[i];
-          this.parent.items[i] = this.parent.items[i + offset];
-          this.parent.items[i + offset] = original;
-
-          break;
-        }
-      }
   }
 
 }

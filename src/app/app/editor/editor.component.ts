@@ -29,14 +29,14 @@ export class EditorComponent implements OnInit {
    * @param db 
    * @param guiService 
    */
-  constructor(private db: AngularFireDatabase, private guiService: GuiService) {
+  constructor(private db: AngularFireDatabase, public guiService: GuiService) {
     console.log('EditorComponent constructed');
     this.objectObservable = db.object('/documents/pharmacopeia');
     this.objectObservable.$ref.once('value', snapshot => {
       if (snapshot.val())
         this.documentRoot = snapshot.val();
       else
-        this.documentRoot = { title: 'New Section', items: [] };
+        this.documentRoot = { title: 'New Document', items: [] };
     });
 
     guiService.setState(this.state);
@@ -64,8 +64,7 @@ export class EditorComponent implements OnInit {
     this.pageEditor = new Quill('#quillPageEditor', { modules: { toolbar: toolbarOptions }, theme: 'snow' });
     this.guiService.setEditor(this.pageEditor);
     this.pageEditor.on('text-change', () => {
-      this.state.storeButtonDisabled = false;
-      this.state.uploadButtonDisabled = true;
+      this.guiService.markTextDirty();
 
       document.getElementById('quillHTML').innerHTML = document.querySelector('#quillPageEditor .ql-editor').innerHTML;
     });
