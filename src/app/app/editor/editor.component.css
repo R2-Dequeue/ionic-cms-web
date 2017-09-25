@@ -22,6 +22,18 @@ td {
   /* word-wrap: break-word; */
 }
 
+#quillHTML /deep/ .ql-font-serif {
+  font-family: serif;
+}
+
+#quillHTML /deep/ .ql-font-monospace {
+  font-family: monospace;
+}
+
 /*font-family: "San Francisco", "Helvetica Neue", "Sans-Serif"
 font-family: Serif
 font-family: Monospace*/
+
+#help-list li {
+  margin-top: 0.5rem;
+}

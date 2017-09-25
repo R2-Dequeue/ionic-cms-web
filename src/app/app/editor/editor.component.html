@@ -7,7 +7,7 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <ul style="list-style-type: none;">
         <li *ngIf="documentRoot">
           <tree-view [parent]="null" [tree]="documentRoot"></tree-view>
@@ -18,24 +18,34 @@
       </ul>
       <ul style="list-style-type: none;">
         <li>
-          <button type="button" class="btn btn-primary" (click)="upload();" [disabled]="state.uploadButtonDisabled">Upload changes</button>
+          <button type="button" class="btn btn-primary" (click)="upload();" [disabled]="state.uploadButtonDisabled">Upload Changes</button>
         </li>
       </ul>
+      <div class="h3" style="margin-top: 8rem;">Help:</div>
+      <ul id="help-list">
+        <li><button type="button" class="btn btn-xs btn-primary hover">+ S</button> adds a new section.</li>
+        <li><button type="button" class="btn btn-xs btn-primary">+ P</button> adds a new page.</li>
+        <li><button type="button" class="btn btn-xs btn-primary">⟵ Save</button> saves the contents of the text editor <em>locally</em> (after saving all your changes you'll need to Upload them).</li>
+        <li><button type="button" class="btn btn-xs btn-primary">Upload Changes</button> uploads all your saved changes to the database (i.e. where the mobile app will see them).</li>
+        <li>Upload often to be safe.</li>
+        <li>Right click and select "Add to dictionary" (or similar) to add technical jargon to the browser's spellchecker.</li>
+      </ul>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-7">
       <form>
         <div class="form-group">
           <label for="quillPageEditor">Page</label>
-          <div id="quillPageEditor" style="height: 20em;"></div>
+          <div id="quillPageEditor" style="height: 30em;"></div>
         </div>
         <button type="submit" class="btn btn-primary" (click)="guiService.updateModel()" [disabled]="state.storeButtonDisabled">⟵ Save</button>
       </form>
-      <br>
+    </div>
+    <div class="col-md-3">
       <label for="quillHTML">Mobile display <em>approximation</em>:</label>
       <div id="quillHTML"></div>
     </div>
   </div>
-  <div class="row">
+  <div *ngIf="debugComponent" class="row">
     <div class="col-md-12">
       <button class="btn btn-primary" (click)="logDocument()">Log</button><br>
       <br>
@@ -53,8 +63,4 @@
       <div style="margin-bottom: 10em;"></div>
     </div>
   </div>
-  <ul>
-    <li>Upload often to be safe.</li>
-    <li>Right click and select "Add to Dictionary" (or similar) to add jargon to the browser's spellchecker.</li>
-  </ul>
 </div>

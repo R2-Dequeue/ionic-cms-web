@@ -7,12 +7,15 @@ import * as Quill from 'quill';
 
 import { GuiService } from '../../services/gui/gui.service';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit {
+  public readonly debugComponent: boolean = !environment.production;
   documentRoot: any = null;
   state: any = {
     uploadButtonDisabled: true,

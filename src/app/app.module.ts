@@ -12,7 +12,7 @@ import { TreeViewComponent } from './app/tree-view/tree-view.component';
 
 import { GuiService } from './services/gui/gui.service';
 
-import { firebaseConfig } from '../assets/authenticate';
+import { firebaseConfig } from '../app/authenticate';
 
 @NgModule({
   declarations: [
